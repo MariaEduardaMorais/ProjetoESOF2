@@ -1,12 +1,22 @@
-# **Projeto de Gerenciamento de Tarefas**
+# Projeto de Gerenciamento de Tarefas
 
+Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetura de microsserviços com Docker. O projeto é dividido em cinco microsserviços: Autenticação, Notificações, Tarefas, Configuração e Descoberta (Eureka).
 
-Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetura de microsserviços com Docker. O projeto é dividido em três microsserviços: Autenticação, Notificações e Tarefas.
+## Estrutura do projeto
 
--> Estrutura do Projeto
-
+``` plaintext
 ProjetoESOF2/
 ├── AuthServices/
+│   ├── src/
+│   ├── build.gradle.kts
+│   ├── Dockerfile
+│   └── ...
+├── ConfigServer/
+│   ├── src/
+│   ├── build.gradle.kts
+│   ├── Dockerfile
+│   └── ...
+├── DiscoveryServer/
 │   ├── src/
 │   ├── build.gradle.kts
 │   ├── Dockerfile
@@ -16,104 +26,293 @@ ProjetoESOF2/
 │   ├── build.gradle.kts
 │   ├── Dockerfile
 │   └── ...
-└── TaskService/
-    ├── src/
-    ├── build.gradle.kts
-    ├── Dockerfile
-    └── ...
-____________________________________________________________________________________________________________________________________________________________________________________________________
+├── TaskService/
+│   ├── src/
+│   ├── build.gradle.kts
+│   ├── Dockerfile
+│   └── ...
+└── docker-compose.yml
+```
+
+---
 
 **Requisitos:**
 * Docker
 * Gradle
-____________________________________________________________________________________________________________________________________________________________________________________________________
+* Java 17
 
-### **Como Construir e Executar os Microsserviços**
+---
 
-**1. Autenticação Service**
-   
--> Navegue até o diretório AuthServices:
-cd C:\IdeaProjects\ProjetoESOF2\AuthServices
+## Como construir e executar os microsserviços
 
--> Construa o JAR do serviço:
-.\gradlew.bat build
+[//]: # ()
+[//]: # (### 1. Autenticação Service)
 
--> Construa a imagem Docker:
-docker build -t auth-service:latest .
+[//]: # ()
+[//]: # (- Navegue até o diretório `AuthServices`:)
 
--> Execute o container:
-docker run -p 8081:8081 auth-service:latest
+[//]: # ()
+[//]: # (    - **Windows/macOS/Linux:** `cd ProjetoESOF2/AuthServices`)
 
-____________________________________________________________________________________________________________________________________________________________________________________________________
+[//]: # ()
+[//]: # (- Construa o JAR do serviço:)
 
-**2. Notificações Service**
-   
--> Navegue até o diretório NotificationsServices:
-cd C:\IdeaProjects\ProjetoESOF2\NotificationsServices
+[//]: # ()
+[//]: # (    - **Windows:** `.\gradlew.bat build`)
 
--> Construa o JAR do serviço:
-.\gradlew.bat build
+[//]: # (    - **macOS/Linux:** `./gradlew build`)
 
--> Construa a imagem Docker:
-docker build -t notification-service:latest .
+[//]: # ()
+[//]: # (  **Observação:** Em sistemas Unix &#40;macOS/Linux&#41;, pode ser necessário garantir que o arquivo `gradlew` tenha permissão de execução. Para fazer isso, execute o seguinte comando:)
 
--> Execute o container:
-docker run -p 8082:8082 notification-service:latest
+[//]: # ()
+[//]: # (    ```bash)
 
-____________________________________________________________________________________________________________________________________________________________________________________________________
+[//]: # (    chmod +x gradlew)
 
-**3. Tarefas Service**
+[//]: # (    ```)
 
--> Navegue até o diretório TaskService:
-cd C:\IdeaProjects\ProjetoESOF2\TaskService
+[//]: # ()
+[//]: # (- Construa a imagem Docker:)
 
--> Construa o JAR do serviço:
-.\gradlew.bat build
+[//]: # ()
+[//]: # (    ```bash)
 
--> Construa a imagem Docker:
-docker build -t task-service:latest .
+[//]: # (    docker build -t auth-service:latest .)
 
--> Execute o container:
-docker run -p 8083:8083 task-service:latest
+[//]: # (    ```)
 
-____________________________________________________________________________________________________________________________________________________________________________________________________
+[//]: # ()
+[//]: # (- Execute o container:)
 
-**Docker Compose**
+[//]: # ()
+[//]: # (    ```bash)
 
-Você também pode usar o Docker Compose para construir e rodar todos os microsserviços juntos. Crie um arquivo docker-compose.yml no diretório raiz do projeto com o seguinte conteúdo:
+[//]: # (    docker run -p 8081:8081 auth-service:latest)
 
-version: '3'
-services:
-  auth-service:
-    build:
-      context: ./AuthServices
-    ports:
-      - "8081:8081"
+[//]: # (    ```)
 
-  notification-service:
-    build:
-      context: ./NotificationsServices
-    ports:
-      - "8082:8082"
+[//]: # ()
+[//]: # (---)
 
-  task-service:
-    build:
-      context: ./TaskService
-    ports:
-      - "8083:8083"
-      
--> Para iniciar os serviços com Docker Compose, execute:
-docker-compose up --build
+[//]: # ()
+[//]: # (### 2. Notificações Service)
 
-____________________________________________________________________________________________________________________________________________________________________________________________________
+[//]: # ()
+[//]: # (- Navegue até o diretório `NotificationsServices`:)
 
-**-> Informações Adicionais**
+[//]: # ()
+[//]: # (    - **Windows/macOS/Linux:** `cd ProjetoESOF2/NotificationsServices`)
 
-Autenticação Service: Lida com autenticação de usuários e emite tokens.
+[//]: # ()
+[//]: # (- Construa o JAR do serviço:)
 
-Notificações Service: Envia notificações para os usuários.
+[//]: # ()
+[//]: # (    - **Windows:** `.\gradlew.bat build`)
 
-Tarefas Service: Gerencia as tarefas dos usuários.
+[//]: # (    - **macOS/Linux:** `./gradlew build`)
+
+[//]: # ()
+[//]: # (  **Observação:** Em sistemas Unix &#40;macOS/Linux&#41;, pode ser necessário garantir que o arquivo `gradlew` tenha permissão de execução. Para fazer isso, execute o seguinte comando:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    chmod +x gradlew)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Construa a imagem Docker:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker build -t notification-service:latest .)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Execute o container:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker run -p 8082:8082 notification-service:latest)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 3. Tarefas Service)
+
+[//]: # ()
+[//]: # (- Navegue até o diretório `TaskService`:)
+
+[//]: # ()
+[//]: # (    - **Windows/macOS/Linux:** `cd ProjetoESOF2/TaskService`)
+
+[//]: # ()
+[//]: # (- Construa o JAR do serviço:)
+
+[//]: # ()
+[//]: # (    - **Windows:** `.\gradlew.bat build`)
+
+[//]: # (    - **macOS/Linux:** `./gradlew build`)
+
+[//]: # ()
+[//]: # (  **Observação:** Em sistemas Unix &#40;macOS/Linux&#41;, pode ser necessário garantir que o arquivo `gradlew` tenha permissão de execução. Para fazer isso, execute o seguinte comando:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    chmod +x gradlew)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Construa a imagem Docker:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker build -t task-service:latest .)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Execute o container:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker run -p 8083:8083 task-service:latest)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 4. Configuração e Descoberta)
+
+[//]: # ()
+[//]: # (#### 4.1 ConfigServer &#40;Configuração&#41;)
+
+[//]: # ()
+[//]: # (- Navegue até o diretório `ConfigServer`:)
+
+[//]: # ()
+[//]: # (    - **Windows/macOS/Linux:** `cd ProjetoESOF2/ConfigServer`)
+
+[//]: # ()
+[//]: # (- Construa o JAR do serviço:)
+
+[//]: # ()
+[//]: # (    - **Windows:** `.\gradlew.bat build`)
+
+[//]: # (    - **macOS/Linux:** `./gradlew build`)
+
+[//]: # ()
+[//]: # (  **Observação:** Em sistemas Unix &#40;macOS/Linux&#41;, pode ser necessário garantir que o arquivo `gradlew` tenha permissão de execução. Para fazer isso, execute o seguinte comando:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    chmod +x gradlew)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Construa a imagem Docker:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker build -t config-server:latest .)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Execute o container:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker run -p 8888:8888 config-server:latest)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (#### 4.2 EurekaServer &#40;Descoberta&#41;)
+
+[//]: # ()
+[//]: # (- Navegue até o diretório `DiscoveryServer`:)
+
+[//]: # ()
+[//]: # (    - **Windows/macOS/Linux:** `cd ProjetoESOF2/DiscoveryServer`)
+
+[//]: # ()
+[//]: # (- Construa o JAR do serviço:)
+
+[//]: # ()
+[//]: # (    - **Windows:** `.\gradlew.bat build`)
+
+[//]: # (    - **macOS/Linux:** `./gradlew build`)
+
+[//]: # ()
+[//]: # (  **Observação:** Em sistemas Unix &#40;macOS/Linux&#41;, pode ser necessário garantir que o arquivo `gradlew` tenha permissão de execução. Para fazer isso, execute o seguinte comando:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    chmod +x gradlew)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Construa a imagem Docker:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker build -t eureka-server:latest .)
+
+[//]: # (    ```)
+
+[//]: # ()
+[//]: # (- Execute o container:)
+
+[//]: # ()
+[//]: # (    ```bash)
+
+[//]: # (    docker run -p 8761:8761 eureka-server:latest)
+
+[//]: # (    ```)
+[//]: # ()
+[//]: # (---)
 
 
-Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte a documentação e o código fonte em cada diretório de serviço.
+Para construir e executar todos os microsserviços, você pode usar o Docker Compose. O Docker Compose cuidará da construção e execução de todos os microsserviços simultaneamente.
+
+
+- Para iniciar os serviços com Docker Compose, execute na raiz do projeto:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+___
+
+## Informações Adicionais
+
+- **Autenticação Service**: Lida com autenticação de usuários e emite tokens.
+
+- **Notificações Service**: Envia notificações para os usuários.
+
+- **Tarefas Service**: Gerencia as tarefas dos usuários.
+
+
+Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte o código fonte em cada diretório de serviço.

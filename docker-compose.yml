@@ -1,0 +1,39 @@
+services:
+  config-server:
+    build:
+      context: ./ConfigServer
+    ports:
+      - "8888:8888"
+
+  eureka-server:
+    build:
+      context: ./DiscoveryServer
+    ports:
+      - "8761:8761"
+
+  auth-service:
+    build:
+      context: ./AuthServices
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=dev
+
+  notification-service:
+    build:
+      context: ./NotificationsServices
+    ports:
+      - "8082:8082"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=dev
+
+  task-service:
+    build:
+      context: ./TaskService
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=dev
