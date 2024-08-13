@@ -2,38 +2,6 @@
 
 Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetura de microsserviços com Docker. O projeto é dividido em cinco microsserviços: Autenticação, Notificações, Tarefas, Configuração e Descoberta (Eureka).
 
-## Estrutura do projeto
-
-``` plaintext
-ProjetoESOF2/
-├── AuthServices/
-│   ├── src/
-│   ├── build.gradle.kts
-│   ├── Dockerfile
-│   └── ...
-├── ConfigServer/
-│   ├── src/
-│   ├── build.gradle.kts
-│   ├── Dockerfile
-│   └── ...
-├── DiscoveryServer/
-│   ├── src/
-│   ├── build.gradle.kts
-│   ├── Dockerfile
-│   └── ...
-├── NotificationsServices/
-│   ├── src/
-│   ├── build.gradle.kts
-│   ├── Dockerfile
-│   └── ...
-├── TaskService/
-│   ├── src/
-│   ├── build.gradle.kts
-│   ├── Dockerfile
-│   └── ...
-└── docker-compose.yml
-```
-
 ---
 
 **Requisitos:**
