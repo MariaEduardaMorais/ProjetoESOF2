@@ -45,14 +45,26 @@ ProjetoESOF2/
 
 ## Como construir e executar os microsserviços
 
-Para construir e executar todos os microsserviços, você pode usar o Docker Compose. O Docker Compose cuidará da construção e execução de todos os microsserviços simultaneamente.
+### 1. Construir os microsserviços
 
+Para construir todos os microsserviços simultaneamente, execute na raiz do projeto:
 
-- Para iniciar os serviços com Docker Compose, execute na raiz do projeto:
-
+ - Windows:
     ```bash
-    docker-compose up --build -d
+    ./gradlew.bat build
     ```
+ - Linux/MacOS:
+    ```bash
+    ./gradlew build
+    ```
+
+### 2. Executar os microsserviços
+
+Para iniciar os serviços com Docker Compose, execute na raiz do projeto:
+
+```bash
+  docker-compose up --build -d
+```
 
 ___
 
