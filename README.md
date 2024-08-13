@@ -5,9 +5,24 @@ Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetu
 ---
 
 **Requisitos:**
+
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
 * Docker
+* Docker Compose
+* Kotlin
 * Gradle
 * Java 17
+
+---
+
+## Clonar o repositório
+
+Para clonar o repositório, execute o seguinte comando:
+
+```bash
+git clone https://github.com/MariaEduardaMorais/ProjetoESOF2.git
+```
 
 ---
 
@@ -43,6 +58,10 @@ ___
 - **Notificações Service**: Envia notificações para os usuários.
 
 - **Tarefas Service**: Gerencia as tarefas dos usuários.
+
+- **Configuração Service**: Centraliza as configurações dos microsserviços.
+
+- **Discovery Server**: Servidor de descoberta de serviços.
 
 
 Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte o código fonte em cada diretório de serviço.
