@@ -1,6 +1,7 @@
 # Projeto de Gerenciamento de Tarefas
 
-Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetura de microsserviços com Docker. O projeto é dividido em cinco microsserviços: Autenticação, Notificações, Tarefas, Configuração e Descoberta (Eureka).
+Este projeto é uma aplicação de gerenciamento de tarefas utilizando arquitetura de microsserviços com Docker. O projeto
+é dividido em cinco microsserviços: Autenticação, Notificações, Tarefas, Configuração e Descoberta (Eureka).
 
 ---
 
@@ -32,14 +33,14 @@ git clone https://github.com/MariaEduardaMorais/ProjetoESOF2.git
 
 Para construir todos os microsserviços simultaneamente, execute na raiz do projeto:
 
- - Windows:
-    ```bash
-    ./gradlew.bat build
-    ```
- - Linux/MacOS:
-    ```bash
-    ./gradlew build
-    ```
+- Windows:
+   ```bash
+   ./gradlew.bat build
+   ```
+- Linux/MacOS:
+   ```bash
+   ./gradlew build
+   ```
 
 ### 2. Executar os microsserviços
 
@@ -48,6 +49,35 @@ Para iniciar os serviços com Docker Compose, execute na raiz do projeto:
 ```bash
   docker-compose up --build -d
 ```
+
+### 3. Reexecutar após modificações
+
+Se houver modificações no código e você precisar reconstruir e reiniciar os microsserviços:
+
+1. **Parar e remover os containers existentes:**
+
+    ```bash
+    docker-compose down --rmi all -v
+    ```
+
+2. **Reconstruir e reiniciar os containers:**
+
+    - Windows:
+        ```bash
+        ./gradlew.bat build
+      ```
+      ```bash
+        docker-compose up --build -d
+        ```
+    - Linux/MacOS:
+        ```bash
+        ./gradlew build
+         ```
+         ```bash
+        docker-compose up --build -d
+        ```
+
+Estes comandos garantem que você comece com um ambiente limpo e atualizado após modificações no código.
 
 ___
 
@@ -63,5 +93,5 @@ ___
 
 - **Discovery Server**: Servidor de descoberta de serviços.
 
-
-Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte o código fonte em cada diretório de serviço.
+Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte o código fonte em cada diretório de
+serviço.
