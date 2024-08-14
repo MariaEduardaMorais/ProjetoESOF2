@@ -4,6 +4,20 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AuthServices" />
+            <option value="$PROJECT_DIR$/ConfigServer" />
+            <option value="$PROJECT_DIR$/DiscoveryServer" />
+            <option value="$PROJECT_DIR$/NotificationsServices" />
+            <option value="$PROJECT_DIR$/TaskService" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/AuthServices" />
         <option name="gradleJvm" value="17" />
         <option name="modules">

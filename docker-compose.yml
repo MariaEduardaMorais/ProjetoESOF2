@@ -4,12 +4,19 @@ services:
       context: ./ConfigServer
     ports:
       - "8888:8888"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - backend
 
   eureka-server:
     build:
       context: ./DiscoveryServer
     ports:
       - "8761:8761"
+    networks:
+      - backend
 
   auth-service:
     build:
@@ -19,6 +26,8 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - backend
 
   notification-service:
     build:
@@ -28,6 +37,8 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - backend
 
   task-service:
     build:
@@ -37,3 +48,9 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
