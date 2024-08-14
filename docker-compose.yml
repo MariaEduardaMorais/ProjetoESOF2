@@ -1,4 +1,12 @@
 services:
+  eureka-server:
+    build:
+      context: ./DiscoveryServer
+    ports:
+      - "8761:8761"
+    networks:
+      - backend
+
   config-server:
     build:
       context: ./ConfigServer
@@ -7,14 +15,6 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
       - SPRING_PROFILES_ACTIVE=dev
-    networks:
-      - backend
-
-  eureka-server:
-    build:
-      context: ./DiscoveryServer
-    ports:
-      - "8761:8761"
     networks:
       - backend
 

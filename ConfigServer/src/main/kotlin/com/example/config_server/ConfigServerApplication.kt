@@ -8,6 +8,7 @@ import org.springframework.cloud.config.server.EnableConfigServer
 @SpringBootApplication
 @EnableConfigServer
 @EnableDiscoveryClient
+
 class ConfigServerApplication
 
 fun main(args: Array<String>) {
