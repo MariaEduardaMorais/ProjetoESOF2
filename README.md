@@ -83,15 +83,15 @@ ___
 
 ## Informações Adicionais
 
-- **Autenticação Service**: Lida com autenticação de usuários e emite tokens.
+- **Autenticação Service** - http://localhost:8081/actuator/health: Lida com autenticação de usuários e emite tokens.
 
-- **Notificações Service**: Envia notificações para os usuários.
+- **Notificações Service** - http://localhost:8082/actuator/health: Envia notificações para os usuários.
 
-- **Tarefas Service**: Gerencia as tarefas dos usuários.
+- **Tarefas Service** - http://localhost:8083/tasks: Gerencia as tarefas dos usuários.
 
-- **Configuração Service**: Centraliza as configurações dos microsserviços.
+- **Configuração Service** - http://localhost:8888/actuator/health: Centraliza as configurações dos microsserviços.
 
-- **Discovery Server**: Servidor de descoberta de serviços.
+- **Discovery Server** - http://localhost:8761: Servidor de descoberta de serviços.
 
 Para mais detalhes sobre o funcionamento interno de cada microsserviço, consulte o código fonte em cada diretório de
 serviço.
